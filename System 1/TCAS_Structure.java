@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class TCAS_Structure<V> implements Map<String, V> {
@@ -14,10 +15,8 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
 
     public boolean isEmpty() {
-        if (this.storageSystem.isEmpty()) {
-            return true;
-        }
-        return false;
+
+        return this.storageSystem.isEmpty();
     }
 
 
@@ -58,7 +57,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     }
 
-    @Override
+
     public V put(String key, V value) {
 
         if (this.containsKey(key)) {
@@ -72,7 +71,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     }
 
-    @Override
+
     public V remove(Object key) {
         for (int i = 0; i < this.storageSystem.size(); i++) {
             if (this.storageSystem.get(i).getKey().equals(key)) {
@@ -86,29 +85,56 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     }
 
-    @Override
+
     public void putAll(Map<? extends String, ? extends V> m) {
+        System.out.println("Not implemented");
+        String[] keys = (String[]) m.keySet().toArray();
+        V[] values = (V[]) m.values().toArray();
+
+        for (int i = 0; i < keys.length; i++) {
+            this.put(keys[i], values[i]);
+        }
 
     }
 
-    @Override
+
     public void clear() {
-
+        while (!this.storageSystem.isEmpty()) {
+            this.storageSystem.remove(0);
+        }
     }
 
-    @Override
+
     public Set<String> keySet() {
-        return null;
+        Set<String> output = new HashSet<String>();
+
+        for (int i = 0; i < storageSystem.size(); i++) {
+            output.add(this.storageSystem.get(i).getKey());
+        }
+
+        return output;
     }
 
-    @Override
+
     public Collection<V> values() {
-        return null;
+        Set<V> output = new HashSet<V>();
+
+        for (int i = 0; i < storageSystem.size(); i++) {
+            output.add(this.storageSystem.get(i).getValue());
+        }
+
+        return output;
     }
 
-    @Override
+    //Todo: Probably fix this entire thing, I don't think it works
     public Set<Entry<String, V>> entrySet() {
-        return null;
+        Set<Entry<String, V>> output = new HashSet<Entry<String, V>>();
+
+        for (int i = 0; i < storageSystem.size(); i++) {
+            output.add(this.storageSystem.get(i));
+        }
+
+        return output;
     }
 
 
