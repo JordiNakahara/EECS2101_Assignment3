@@ -65,7 +65,7 @@ public class Test {
         System.out.println("Values result with each element of the collection being printed on a new line: ");
         Collection valueSet1 = test2.values();
         Object[] valueArray1 = valueSet1.toArray();
-        for (int i = 0; i < keyArray1.length; i++) {
+        for (int i = 0; i < valueArray1.length; i++) {
             System.out.println(valueArray1[i]);
         }
 

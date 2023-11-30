@@ -45,13 +45,36 @@ public class TCAS {
                     String output = system.put(inputKey, inputValue).toString();
                     System.out.println("Put value of: " + output + " to the system");
                 } else if (command.equals("remove")) {
-
+                    int index2 = input.indexOf('"') + 1;
+                    int index3 = input.indexOf('"', 8);
+                    String inputKey = input.substring(index2, index3);
+                    System.out.println(inputKey);
+                    String output = system.remove(inputKey).toString();
+                    System.out.println("Remove value of: " + output + " from the system");
                 } else if (command.equals("keySet")) {
-
+                    System.out.println("Keyset result with each element of the set being printed on a new line: ");
+                    Set<String> keySet1 = system.keySet();
+                    Object[] keyArray1 = keySet1.toArray();
+                    for (int i = 0; i < keyArray1.length; i++) {
+                        System.out.println(keyArray1[i]);
+                    }
                 } else if (command.equals("values")) {
-
+                    System.out.println("Values result with each element of the collection being printed on a new line: ");
+                    Collection valueSet1 = system.values();
+                    Object[] valueArray1 = valueSet1.toArray();
+                    for (int i = 0; i < valueArray1.length; i++) {
+                        System.out.println(valueArray1[i]);
+                    }
                 } else if (command.equals("entrySet")) {
-
+                    System.out.println("Entryset result with each pair of elements being printed on a new line: ");
+                    Set<Map.Entry> entrySet1 = system.entrySet();
+                    Map.Entry[] entryArray1 = new Map.Entry[entrySet1.size()];
+                    entrySet1.toArray(entryArray1);
+                    for (int i = 0; i < entryArray1.length; i++) {
+                        Object tempKey = entryArray1[i].getKey();
+                        Object tempValue = entryArray1[i].getValue();
+                        System.out.println(tempKey + ", " + tempValue);
+                    }
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input!");
