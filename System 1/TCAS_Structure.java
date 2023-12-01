@@ -2,9 +2,10 @@ import java.util.*;
 
 /**
  * This class is the data structure that will be used by the TCAS system. It is based on an unsorted map that uses an array list implementation.
+ *
+ * @param <V> This is the data type of the values of the structure.
  * @author Jordi Nakahara
  * @version 1.0
- * @param <V> This is the data type of the values of the structure.
  */
 public class TCAS_Structure<V> implements Map<String, V> {
     ArrayList<TCAS_Entry<V>> storageSystem;
@@ -19,6 +20,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     /**
      * This method states the size of a structure by reading the size of the array list.
+     *
      * @return The size of the structure.
      */
     public int size() {
@@ -28,6 +30,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     /**
      * This method states whether the structure is empty.
+     *
      * @return A boolean that is true when the structure has 0 elements and false otherwise.
      */
     public boolean isEmpty() {
@@ -38,6 +41,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     /**
      * This method states whether a given key is within the structure.
+     *
      * @param key key whose presence in this map is to be tested.
      * @return A boolean that is true if the key exists and false otherwise.
      */
@@ -55,6 +59,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     /**
      * This method states whether a given value is within the structure.
+     *
      * @param value value whose presence in this map is to be tested.
      * @return A boolean that is true if the value exists and false otherwise.
      */
@@ -71,6 +76,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     /**
      * This method returns the value of a given key.
+     *
      * @param key the key whose associated value is to be returned.
      * @return The value associated with the key if it exists and null otherwise.
      */
@@ -89,7 +95,8 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     /**
      * This method adds a given key-value pair into the system.
-     * @param key key with which the specified value is to be associated.
+     *
+     * @param key   key with which the specified value is to be associated.
      * @param value value to be associated with the specified key.
      * @return The value that was put into the structure and null if the key already exists within the structure.
      */
@@ -108,6 +115,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     /**
      * This method removes a given key and its associated value from the structure.
+     *
      * @param key key whose mapping is to be removed from the map.
      * @return The value associated with the structure and null if the key-value pair was not removed.
      */
@@ -126,6 +134,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     /**
      * This method puts a given map into the structure.
+     *
      * @param m mappings to be stored in this map.
      */
     public void putAll(Map<? extends String, ? extends V> m) {
@@ -152,6 +161,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     /**
      * This method gives a set containing all the keys of the system.
+     *
      * @return A set containing all the keys in the system.
      */
     public Set<String> keySet() {
@@ -167,6 +177,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     /**
      * This method gives the collection of the values contained in the structure.
+     *
      * @return A collection containing the values of the structure.
      */
     public Collection<V> values() {
@@ -181,6 +192,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
     /**
      * This method gives the set of the keys contained within the structure
+     *
      * @return A set containing the keys of the structure.
      */
     public Set<Entry<String, V>> entrySet() {
@@ -199,6 +211,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 /**
  * This class is the data type of the entries of the TCAS_Structure.
  * The keys are of the string data type and the data type of the values is determined by "V".
+ *
  * @param <V> The type of the value.
  */
 class TCAS_Entry<V> implements Map.Entry<String, V> {
@@ -207,7 +220,8 @@ class TCAS_Entry<V> implements Map.Entry<String, V> {
 
     /**
      * This method is the constructor for new entries.
-     * @param key The key with data type string.
+     *
+     * @param key   The key with data type string.
      * @param value The value with data type determined by "V".
      */
     public TCAS_Entry(String key, V value) {
@@ -217,6 +231,7 @@ class TCAS_Entry<V> implements Map.Entry<String, V> {
 
     /**
      * This method gives the key of the entry.
+     *
      * @return The string representing the key of the entry.
      */
     public String getKey() {
@@ -225,6 +240,7 @@ class TCAS_Entry<V> implements Map.Entry<String, V> {
 
     /**
      * This method gives the value of the entry.
+     *
      * @return The value of the entry with data type determined by "V".
      */
     public V getValue() {
@@ -233,6 +249,7 @@ class TCAS_Entry<V> implements Map.Entry<String, V> {
 
     /**
      * This method changes the value of the entry.
+     *
      * @param value new value to be stored in this entry.
      * @return The old value of the entry.
      */
