@@ -181,7 +181,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
      * @return A collection containing the values of the structure.
      */
     public Collection<V> values() {
-        Collection<V> output = new HashSet<V>();
+        Collection<V> output = new ArrayList<>();
 
         for (int i = 0; i < storageSystem.size(); i++) {
             output.add(this.storageSystem.get(i).getValue());

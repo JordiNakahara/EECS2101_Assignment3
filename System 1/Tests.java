@@ -37,6 +37,43 @@ public class Tests {
 
     }
 
+    @Test
+    public void Test2() {
+        TCAS_Structure test = new TCAS_Structure<>();
+        String[] keys = new String[20];
+        Integer[] values = new Integer[20];
+
+
+        for (int i = 0; i < keys.length; i++) {
+            keys[i] = "" + i;
+            values[i] = (i + 7) % 4;
+            test.put(keys[i], values[i]);
+        }
+
+        Collection<Integer> valuesCollection1 = test.values();
+        Integer[] valuesArray1 = new Integer[valuesCollection1.size()];
+        valuesCollection1.toArray(valuesArray1);
+        for (int i = 0; i < valuesArray1.length; i++) {
+            Assert.assertEquals(values[i], valuesArray1[i]);
+        }
+
+        Set<String> keysSet1 = test.keySet();
+        String[] keysArray1 = new String[keysSet1.size()];
+        keysSet1.toArray(keysArray1);
+        for (int i = 0; i < keysArray1.length; i++) {
+            Assert.assertTrue(test.containsKey(keysArray1[i]));
+        }
+
+        Set<TCAS_Entry> entrySet1 = test.entrySet();
+        TCAS_Entry[] entryArray1 = new TCAS_Entry[entrySet1.size()];
+        entrySet1.toArray(entryArray1);
+        for (int i = 0; i < entryArray1.length; i++) {
+            String tempKey = entryArray1[i].getKey().toString();
+            Assert.assertEquals(test.get(tempKey), entryArray1[i].getValue());
+        }
+
+    }
+
 
 //Old main method below, remove in final version
 
