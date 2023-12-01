@@ -138,12 +138,11 @@ public class TCAS_Structure<V> implements Map<String, V> {
      * @param m mappings to be stored in this map.
      */
     public void putAll(Map<? extends String, ? extends V> m) {
-        System.out.println("Not implemented");
-        String[] keys = (String[]) m.keySet().toArray();
+        Object[] keys = m.keySet().toArray();
         V[] values = (V[]) m.values().toArray();
 
         for (int i = 0; i < keys.length; i++) {
-            this.put(keys[i], values[i]);
+            this.put(keys[i].toString(), values[i]);
         }
 
     }
