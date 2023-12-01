@@ -1,6 +1,14 @@
 import java.util.*;
 
+/**
+ * This class contains the main method that is used as the main interface for system 1.
+ */
 public class TCAS {
+
+    /**
+     * This method is run via the command line and interfaces with TCAS_Structure.java
+     * @param args
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean flag = true;
