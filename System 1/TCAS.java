@@ -49,8 +49,14 @@ public class TCAS {
                     index2 = input.indexOf(',') + 1;
                     index3 = input.indexOf(')');
                     String inputValue = input.substring(index2, index3);
-                    String output = system.put(inputKey, inputValue).toString();
-                    System.out.println("Put value of: " + output + " to the system");
+                    Object output = system.put(inputKey, inputValue);
+                    if(output == null) {
+                        System.out.println("Added the value of: " + inputValue + " to the system");
+                    }
+                    else {
+                        System.out.println("Replaced value of: " + output + " in the system");
+                    }
+
                 } else if (command.equals("remove")) {
                     int index2 = input.indexOf('"') + 1;
                     int index3 = input.indexOf('"', 8);

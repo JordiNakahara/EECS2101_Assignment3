@@ -103,13 +103,20 @@ public class TCAS_Structure<V> implements Map<String, V> {
     public V put(String key, V value) {
 
         if (this.containsKey(key)) {
-            return null;
+            int index = -1;
+            for (int i = 0; i < storageSystem.size(); i++) {
+                if(this.storageSystem.get(i).getKey().equals(key)) {
+                    index = i;
+                }
+            }
+            this.storageSystem.get(index).setValue(value);
+            return value;
         }
 
         TCAS_Entry input = new TCAS_Entry<>(key, value);
 
         this.storageSystem.add(input);
-        return value;
+        return null;
 
     }
 
