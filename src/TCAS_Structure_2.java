@@ -71,7 +71,15 @@ public class TCAS_Structure_2<V> {
     }
 
     public V remove(String key){
-        getSwitch = false;
+        if (size() == 1){
+            if (header.getKey().equals(key)){
+                V value = header.getValue();
+                header = null;
+                count = 0;
+                return value;
+            }
+        }
+
         get = null;
         getSwitch = false;
         preOrderGetAndPrevious(header, header, key);
@@ -120,10 +128,12 @@ public class TCAS_Structure_2<V> {
     }
 
     private void preOrderGetAndPrevious(TCAS_Node<V> preNode, TCAS_Node<V> node, String key){
-        if ((!getSwitch) && !(node.getKey().equals(key))){
-            prevGetNode = node;
-            System.out.println("LAST PRE NODE: " + prevGetNode.getKey());
+        if (node != null){
+            if ((!getSwitch) && !(node.getKey().equals(key))){
+                prevGetNode = node;
+            }
         }
+
 
         if (node == null || getSwitch){ //===NULL CASE===
             //PASS
