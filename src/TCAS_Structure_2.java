@@ -93,8 +93,8 @@ public class TCAS_Structure_2<V> {
         }
     }
 
-    public Collection<String> keySet(){
-        Collection<String> keys = new ArrayList<>();
+    public Set<String> keySet(){
+        Set<String> keys = new HashSet<>();
         preOrderKeySet(header, keys);
         return keys;
     }
@@ -105,9 +105,8 @@ public class TCAS_Structure_2<V> {
         return values;
     }
 
-    //TODO
-    public Map<String, V> entrySet(){
-        Map<String, V> entrySet = new HashMap<>();
+    public Set<Map.Entry<String, V>> entrySet(){
+        Set<Map.Entry<String, V>> entrySet = new HashSet<>();
         preOrderEntrySet(header, entrySet);
         return entrySet;
     }
@@ -187,7 +186,7 @@ public class TCAS_Structure_2<V> {
         addNodes(redoNodes);
     }
 
-    private void preOrderKeySet(TCAS_Node<V> node, Collection<String> keys){
+    private void preOrderKeySet(TCAS_Node<V> node, Set<String> keys){
         if (node != null){
             keys.add(node.getKey());
             preOrderKeySet(node.getLeftNode(), keys);
@@ -203,9 +202,9 @@ public class TCAS_Structure_2<V> {
         }
     }
 
-    private void preOrderEntrySet(TCAS_Node<V> node, Map<String, V> entrySet){
+    private void preOrderEntrySet(TCAS_Node<V> node, Set<Map.Entry<String, V>> entrySet){
         if (node != null){
-            entrySet.put(node.getKey(), node.getValue());
+            entrySet.add(node);
             preOrderEntrySet(node.getLeftNode(), entrySet);
             preOrderEntrySet(node.getRightNode(), entrySet);
         }
@@ -234,7 +233,7 @@ public class TCAS_Structure_2<V> {
     }
 
     //=====INNER CLASS=====
-    private class TCAS_Node<V>{
+    private class TCAS_Node<V> implements Map.Entry<String, V>{
         //=====VARIABLES=====
         private final String key;
         private V value;
@@ -259,8 +258,9 @@ public class TCAS_Structure_2<V> {
         //=====FUNCTIONS=====
 
         //=====GETTERS/SETTERS=====
-        public void setValue(V value) {
+        public V setValue(V value) {
             this.value = value;
+            return value;
         }
 
         public void setLeftNode(TCAS_Node<V> leftNode) {
