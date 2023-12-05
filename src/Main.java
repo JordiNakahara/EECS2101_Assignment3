@@ -1,4 +1,6 @@
+import java.util.Map;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args){
@@ -108,7 +110,19 @@ public class Main {
                 } else if (command.equals("entrySet")) {
 //                    System.out.println("Entryset result with each pair of elements being printed on a new line: ");
                     if (input.indexOf(')') == 9){
-                        System.out.println(tcas.entrySet());
+                        Set<Map.Entry<String, Integer>> entrySet1 = tcas.entrySet();
+                        Map.Entry[] entryArray1 = new Map.Entry[entrySet1.size()];
+                        entrySet1.toArray(entryArray1);
+                        System.out.print("[");
+                        for (int i = 0; i < entryArray1.length; i++) {
+                            Object tempKey = entryArray1[i].getKey();
+                            Object tempValue = entryArray1[i].getValue();
+                            System.out.print("('" + tempKey + "', " + tempValue + ")");
+                            if (i != entryArray1.length - 1){
+                                System.out.print(", ");
+                            }
+                        }
+                        System.out.println("]");
                     }else {
                         System.out.println("Invalid command name!");
                     }
