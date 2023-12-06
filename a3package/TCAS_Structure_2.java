@@ -204,9 +204,10 @@ public class TCAS_Structure_2<V> {
     //=====PRIVATE FUNCTIONS=====
 
     /**
+     * This is a helper method for get(String) that searches the structure for a key and returns the associated value recusively.
      *
-     * @param node
-     * @param key
+     * @param node the current node we are checking
+     * @param key The key to search the stucture for.
      */
     private void preOrderGet(TCAS_Node<V> node, String key) {
         if (node == null || getSwitch) { //===NULL CASE===
