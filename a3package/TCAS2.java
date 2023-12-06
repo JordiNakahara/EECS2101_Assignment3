@@ -19,7 +19,7 @@ public class TCAS2 {
      */
     public static void main(String[] args) {
 
-        TCAS_Structure_2<Integer> tcas = new TCAS_Structure_2<>();
+        TCAS_Structure_2<String> tcas = new TCAS_Structure_2<>();
         Scanner sc = new Scanner(System.in);
         boolean flag = true;
 
@@ -65,7 +65,7 @@ public class TCAS2 {
                     String inputKey = input.substring(index2, index3);
                     index2 = input.indexOf(',') + 1;
                     index3 = input.indexOf(')');
-                    Integer inputValue = Integer.valueOf((input.substring(index2, index3)).trim());
+                    String inputValue = input.substring(index2, index3);
                     System.out.println(tcas.put(inputKey, inputValue));
                 } else if (command.equals("remove")) {
                     int index2 = input.indexOf('"') + 1;
@@ -90,7 +90,7 @@ public class TCAS2 {
                 } else if (command.equals("entrySet")) {
 //                    System.out.println("Entryset result with each pair of elements being printed on a new line: ");
                     if (input.indexOf(')') == 9) {
-                        Set<Map.Entry<String, Integer>> entrySet1 = tcas.entrySet();
+                        Set<Map.Entry<String, String>> entrySet1 = tcas.entrySet();
                         Map.Entry[] entryArray1 = new Map.Entry[entrySet1.size()];
                         entrySet1.toArray(entryArray1);
                         System.out.print("[");
