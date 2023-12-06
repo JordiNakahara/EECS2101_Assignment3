@@ -299,6 +299,12 @@ public class TCAS_Structure_2<V> {
         addNodes(redoNodes);
     }
 
+    /**
+     * This is a helper method for keySet() that updates a set with all the keys (recursively).
+     *
+     * @param node the current node we are checking
+     * @param keys the set we are updating
+     */
     private void preOrderKeySet(TCAS_Node<V> node, Set<String> keys) {
         if (node != null) {
             keys.add(node.getKey());
@@ -307,6 +313,12 @@ public class TCAS_Structure_2<V> {
         }
     }
 
+    /**
+     * This is a helper method for values() that updates a set with all the values (recursively).
+     *
+     * @param node the current node we are checking
+     * @param values the set we are updating
+     */
     private void preOrderValues(TCAS_Node<V> node, Collection<V> values) {
         if (node != null) {
             values.add(node.getValue());
@@ -316,6 +328,12 @@ public class TCAS_Structure_2<V> {
         }
     }
 
+    /**
+     * This is a helper method for entrySet() that updates a set with all the keys and values (recursively).
+     *
+     * @param node the current node we are checking
+     * @param entrySet the set we are updating
+     */
     private void preOrderEntrySet(TCAS_Node<V> node, Set<Map.Entry<String, V>> entrySet) {
         if (node != null) {
             entrySet.add(node);
@@ -324,11 +342,16 @@ public class TCAS_Structure_2<V> {
         }
     }
 
+    /**
+     * This is a helper method for remove(String). It obtains all nodes after the specified node and adds them to a list.
+     *
+     * @param node the current node we are checking
+     * @param list the arraylist we are updating
+     */
     private void getRestNodes(TCAS_Node<V> node, ArrayList<TCAS_Node<V>> list) {
         if (node == null) {
             return;
         } else {
-//            System.out.println("TO BE ADDED: " + node.getKey());
             list.add(node);
         }
 
@@ -340,6 +363,11 @@ public class TCAS_Structure_2<V> {
         }
     }
 
+    /**
+     * This is a helper method for remove(String) it adds nodes from a list to the structure.
+     *
+     * @param list the arraylist of nodes we want to add
+     */
     private void addNodes(ArrayList<TCAS_Node<V>> list) {
         for (int i = 0; i < list.size(); i++) {
             put(list.get(i).getKey(), list.get(i).getValue());
