@@ -11,7 +11,7 @@ import java.util.*;
  * @version 1.0
  */
 public class TCAS_Structure<V> implements Map<String, V> {
-    ArrayList<TCAS_Entry<V>> storageSystem;
+    ArrayList<TCAS_Entry<V>> storageSystem; //This arraylist stores the key-value pairs
 
     /**
      * This method creates an empty TCAS_Structure.
@@ -224,8 +224,8 @@ public class TCAS_Structure<V> implements Map<String, V> {
  * @param <V> The type of the value.
  */
 class TCAS_Entry<V> implements Map.Entry<String, V> {
-    private String key;
-    private V value;
+    private String key; //The key of the key-value pair
+    private V value; //The value of the key-value pair
 
     /**
      * This method is the constructor for new entries.

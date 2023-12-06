@@ -19,9 +19,11 @@ public class Tests {
      */
     @Test
     public void Test1() {
-        TCAS_Structure test = new TCAS_Structure<>();
-        String[] keys = {"First", "Second", "Third"};
-        Integer[] values = {1, 2, 3};
+        TCAS_Structure test = new TCAS_Structure<>(); //The structure to be tested
+        String[] keys = {"First", "Second", "Third"}; //Initial keys
+        Integer[] values = {1, 2, 3}; //Initial values
+
+        //Adding the initials to the structure
         for (int i = 0; i < keys.length; i++) {
             test.put(keys[i], values[i]);
         }
