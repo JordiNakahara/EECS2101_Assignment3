@@ -1,15 +1,16 @@
 package a3package;
 
 import org.junit.jupiter.api.Test;
-
 import org.junit.Assert;
 
 import java.util.*;
 
 
-
 /**
  * This class contains some basic test cases for system 1 and can be used as a template for future test cases.
+ *
+ * @author Landon Navarre
+ * @version 1.0
  */
 public class Tests {
 
@@ -100,7 +101,7 @@ public class Tests {
      */
     @Test
     public void Test3() {
-    	//Declaration and adding key-value pairs
+        //Declaration and adding key-value pairs
         TCAS_Structure test = new TCAS_Structure<>();
         String[] keys = {"This is a really long key",
                 "This is also a key", "This is another key", "Yet another key"};
@@ -108,7 +109,7 @@ public class Tests {
         for (int i = 0; i < keys.length; i++) {
             test.put(keys[i], values[i]);
         }
-        
+
         //Testing for values of key-value pairs in system
         Collection<Integer> valuesCollection1 = test.values();
         Integer[] valuesArray1 = new Integer[valuesCollection1.size()];
@@ -161,22 +162,21 @@ public class Tests {
         test.clear();
         Assert.assertTrue(test.isEmpty());
     }
-    
+
     /**
      * From here we shift to testing TCAS_Structure2, starting with a test of basic functionality
      * as we did for our first structure.
      */
     @Test
-    public void Test4()
-    {
-    	//Declaration and adding key-value pairs
-    	TCAS_Structure_2 toTest = new TCAS_Structure_2();
-    	String[] keys = {"First", "Second", "Third"};
+    public void Test4() {
+        //Declaration and adding key-value pairs
+        TCAS_Structure_2 toTest = new TCAS_Structure_2();
+        String[] keys = {"First", "Second", "Third"};
         Integer[] values = {1, 2, 3};
         for (int i = 0; i < keys.length; i++) {
             toTest.put(keys[i], values[i]);
         }
-        
+
         //Testing values of key-value pairs in system.
         Collection<Integer> valuesCollection1 = toTest.values();
         Integer[] valuesArray1 = new Integer[valuesCollection1.size()];
@@ -184,7 +184,7 @@ public class Tests {
         for (int i = 0; i < valuesArray1.length; i++) {
             Assert.assertEquals(values[i], valuesArray1[i]);
         }
-        
+
         //Testing keys of key-value pairs in system
         Collection<String> keysSet1 = toTest.keySet();
         String[] keysArray1 = new String[keysSet1.size()];
@@ -192,22 +192,20 @@ public class Tests {
         for (int i = 0; i < keysArray1.length; i++) {
             Assert.assertTrue(toTest.containsKey(keysArray1[i]));
         }
-        
+
         //Testing key-value pairs in system
         Set<TCAS_Structure_2.TCAS_Node> entrySet1 = toTest.entrySet();
-        for(TCAS_Structure_2.TCAS_Node entry : entrySet1)
-        {
-        	String tempKey = entry.getKey().toString();
-        	Assert.assertEquals(toTest.get(tempKey), entry.getValue());
+        for (TCAS_Structure_2.TCAS_Node entry : entrySet1) {
+            String tempKey = entry.getKey().toString();
+            Assert.assertEquals(toTest.get(tempKey), entry.getValue());
         }
     }
-    
+
     /**
      * Testing system 2 over a large collection of entries.
      */
     @Test
-    public void Test5()
-    {
+    public void Test5() {
         TCAS_Structure_2 toTest = new TCAS_Structure_2();
         String[] keys = new String[100];
         Integer[] values = new Integer[100];
@@ -219,18 +217,17 @@ public class Tests {
             toTest.put(keys[i], values[i]);
             //The above is error-free, the values[] array is as expected.
         }
-        
+
         //Testing values of key-value pairs in our system.
         Collection<Integer> valuesCollection1 = toTest.values();
 
         Integer[] valuesArray1 = new Integer[valuesCollection1.size()];
         valuesCollection1.toArray(valuesArray1);
 
-        for (int i = 0; i < valuesArray1.length; i++)
-        {
+        for (int i = 0; i < valuesArray1.length; i++) {
             Assert.assertEquals(values[i], valuesArray1[i]);
         }
-        
+
         //Testing keys of key-value pairs in our system.
         Collection<String> keysSet1 = toTest.keySet();
         String[] keysArray1 = new String[keysSet1.size()];
@@ -238,26 +235,24 @@ public class Tests {
         for (int i = 0; i < keysArray1.length; i++) {
             Assert.assertTrue(toTest.containsKey(keysArray1[i]));
         }
-        
+
         //Testing key-value pairs in our system.
         Set<TCAS_Structure_2.TCAS_Node> entrySet1 = toTest.entrySet();
-        for(TCAS_Structure_2.TCAS_Node entry : entrySet1)
-        {
-        	String tempKey = entry.getKey().toString();
-        	Assert.assertEquals(toTest.get(tempKey), entry.getValue());
+        for (TCAS_Structure_2.TCAS_Node entry : entrySet1) {
+            String tempKey = entry.getKey().toString();
+            Assert.assertEquals(toTest.get(tempKey), entry.getValue());
         }
     }
-    
+
     /**
      * Testing the remaining functionality of system #2.
      */
     @Test
-    public void Test6()
-    {
-    	//Testing isEmpty() functionality.
+    public void Test6() {
+        //Testing isEmpty() functionality.
         TCAS_Structure_2 toTest = new TCAS_Structure_2<>();
         Assert.assertTrue(toTest.isEmpty());
-        
+
         //Adding key-value pairs.
         String[] keys = {"This is a really long key",
                 "This is also a key", "This is another key", "Yet another key"};
@@ -282,13 +277,12 @@ public class Tests {
         for (int i = 0; i < keysArray1.length; i++) {
             Assert.assertTrue(toTest.containsKey(keysArray1[i]));
         }
-        
+
         //Testing key-value pairs in system
         Set<TCAS_Structure_2.TCAS_Node> entrySet1 = toTest.entrySet();
-        for(TCAS_Structure_2.TCAS_Node entry : entrySet1)
-        {
-        	String tempKey = entry.getKey().toString();
-        	Assert.assertEquals(toTest.get(tempKey), entry.getValue());
+        for (TCAS_Structure_2.TCAS_Node entry : entrySet1) {
+            String tempKey = entry.getKey().toString();
+            Assert.assertEquals(toTest.get(tempKey), entry.getValue());
         }
 
         //Testing removal via isEmpty
@@ -305,14 +299,13 @@ public class Tests {
             toPutAll.put(keys[i], values[i]);
             toTest.put(keys[i], values[i]);
         }
-		
+
         //Re-testing key-value pairs
         entrySet1 = toTest.entrySet();
-        for(TCAS_Structure_2.TCAS_Node entry : entrySet1)
-        {
-        	String tempKey = entry.getKey().toString();
-        	Assert.assertEquals(toTest.get(tempKey), entry.getValue());
+        for (TCAS_Structure_2.TCAS_Node entry : entrySet1) {
+            String tempKey = entry.getKey().toString();
+            Assert.assertEquals(toTest.get(tempKey), entry.getValue());
         }
     }
-    
+
 }

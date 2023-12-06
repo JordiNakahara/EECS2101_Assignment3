@@ -3,7 +3,8 @@ package a3package;
 import java.util.*;
 
 /**
- * This class is the data structure that will be used by the TCAS system. It is based on an unsorted map that uses an array list implementation.
+ * This class is the data structure that will be used by the TCAS system.
+ * It is based on an unsorted map that uses an array list implementation.
  *
  * @param <V> This is the data type of the values of the structure.
  * @author Jordi Nakahara
@@ -107,7 +108,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
         if (this.containsKey(key)) {
             int index = -1;
             for (int i = 0; i < storageSystem.size(); i++) {
-                if(this.storageSystem.get(i).getKey().equals(key)) {
+                if (this.storageSystem.get(i).getKey().equals(key)) {
                     index = i;
                 }
             }

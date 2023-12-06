@@ -4,6 +4,9 @@ import java.util.*;
 
 /**
  * This class contains the main method that is used as the main interface for system 1.
+ *
+ * @author Jordi Nakahara
+ * @version 1.0
  */
 public class TCAS {
 
@@ -21,7 +24,7 @@ public class TCAS {
         while (flag) {
             try {
                 String input = sc.nextLine();
-                if(input.toLowerCase().equals("quit")) {
+                if (input.toLowerCase().equals("quit")) {
                     return;
                 }
                 int index = input.indexOf('(');
