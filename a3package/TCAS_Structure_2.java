@@ -28,11 +28,20 @@ public class TCAS_Structure_2<V> {
 
     //=====CONSTRUCTORS=====
 
+    /**
+     * This is the default constructor.
+     */
     public TCAS_Structure_2() {
         this.header = null;
         this.count = 0;
     }
 
+    /**
+     * This constructor takes in a key and a value and adds them to the newly initialized structure.
+     *
+     * @param key   The initial key to be added.
+     * @param value The initial value to be added.
+     */
     public TCAS_Structure_2(String key, V value) {
         this.header = new TCAS_Node<>(key, value);
         this.count = 1;
@@ -40,14 +49,30 @@ public class TCAS_Structure_2<V> {
 
     //=====FUNCTIONS=====
 
+    /**
+     * This method gives the current size of the structure.
+     *
+     * @return The current size of the structure as an int.
+     */
     public int size() {
         return this.count;
     }
 
+    /**
+     * This method states whether the structure is currently empty.
+     *
+     * @return A boolean that is true if the structure has 0 elements and false otherwise.
+     */
     public boolean isEmpty() {
         return (this.count == 0);
     }
 
+    /**
+     * This method searches the structure for a key and returns the associated value.
+     *
+     * @param key The key to search the stucture for.
+     * @return The value associated with the key and null if the key is not in the structure.
+     */
     public V get(String key) {
         if (count == 0) {
             return null;
@@ -58,6 +83,14 @@ public class TCAS_Structure_2<V> {
         return get;
     }
 
+    /**
+     * This method adds a given key-value pair to the structure if it doesn't already exist in it.
+     * If it does exist the old value is swapped for the new one.
+     *
+     * @param key   The key to add to the structure or to have its value replaced.
+     * @param value The value to add or replace with.
+     * @return The old value or null if there was none.
+     */
     public V put(String key, V value) {
         if (count == 0) {
             header = new TCAS_Node<>(key, value);
@@ -80,6 +113,12 @@ public class TCAS_Structure_2<V> {
         }
     }
 
+    /**
+     * This method removes a given key-value pair from the structure and returns it.
+     *
+     * @param key The key to be removed from the structure.
+     * @return The value that was removed or null if none was.
+     */
     public V remove(String key) {
         if (size() == 1) {
             if (header.getKey().equals(key)) {
@@ -103,6 +142,12 @@ public class TCAS_Structure_2<V> {
         }
     }
 
+    /**
+     * This method checks to see if a given key is within the structure.
+     *
+     * @param key The key to be checked for.
+     * @return A boolean that is true if the key is in the structure and false otherwise.
+     */
     public boolean containsKey(Object key) {
         for (String toCheck : this.keySet()) {
             if (toCheck.equals(key)) {
@@ -112,6 +157,11 @@ public class TCAS_Structure_2<V> {
         return false;
     }
 
+    /**
+     * This method checks to see if a given value is contained within the structure.
+     * @param value The value to be checked for.
+     * @return A boolean that is true if the value was found in the structure and false otherwise.
+     */
     public boolean containsValue(Object value) {
         for (V toCheck : this.values()) {
             if (toCheck.equals(value)) {
@@ -121,18 +171,30 @@ public class TCAS_Structure_2<V> {
         return false;
     }
 
+    /**
+     * This method gives the set of all keys contained within the structure.
+     * @return A set with all the keys contained within the structure.
+     */
     public Set<String> keySet() {
         Set<String> keys = new HashSet<>();
         preOrderKeySet(header, keys);
         return keys;
     }
 
+    /**
+     * This method gives a collection with all the values contained within the structure.
+     * @return A collection containing all the values of the structure.
+     */
     public Collection<V> values() {
         Collection<V> values = new ArrayList<>();
         preOrderValues(header, values);
         return values;
     }
 
+    /**
+     * This method gives a set containing all the key-value pairs of the structure.
+     * @return A set with type Map.Entry containing all the key-value entries in the structure.
+     */
     public Set<Map.Entry<String, V>> entrySet() {
         Set<Map.Entry<String, V>> entrySet = new HashSet<>();
         preOrderEntrySet(header, entrySet);
@@ -141,6 +203,11 @@ public class TCAS_Structure_2<V> {
 
     //=====PRIVATE FUNCTIONS=====
 
+    /**
+     * 
+     * @param node
+     * @param key
+     */
     private void preOrderGet(TCAS_Node<V> node, String key) {
         if (node == null || getSwitch) { //===NULL CASE===
             //PASS

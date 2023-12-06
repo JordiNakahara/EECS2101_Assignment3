@@ -97,7 +97,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
 
     /**
-     * This method adds a given key-value pair into the system.
+     * This method adds a given key-value pair into the structure.
      *
      * @param key   key with which the specified value is to be associated.
      * @param value value to be associated with the specified key.
@@ -159,7 +159,7 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
 
     /**
-     * This method removes all key-value pairs within the system, leaving an empty system.
+     * This method removes all key-value pairs within the structure, leaving an empty structure.
      */
     public void clear() {
         while (!this.storageSystem.isEmpty()) {
@@ -169,9 +169,9 @@ public class TCAS_Structure<V> implements Map<String, V> {
 
 
     /**
-     * This method gives a set containing all the keys of the system.
+     * This method gives a set containing all the keys of the structure.
      *
-     * @return A set containing all the keys in the system.
+     * @return A set containing all the keys in the structure.
      */
     public Set<String> keySet() {
         Set<String> output = new HashSet<String>();
