@@ -5,7 +5,7 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class TCAS2 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //TCAS_Structure_2<Integer> tcas = new TCAS_Structure_2<>("3", 3);
         /*
         tcas.put("2", 2);
@@ -51,6 +51,9 @@ public class TCAS2 {
         while (flag) {
             try {
                 String input = sc.nextLine();
+                if(input.toLowerCase().equals("quit")) {
+                    return;
+                }
                 int index = input.indexOf('(');
                 String command = "";
                 if (index != -1) {
@@ -61,24 +64,24 @@ public class TCAS2 {
                 }
 
                 if (command.equals("size")) {
-                    if (input.indexOf(')') == 5){
+                    if (input.indexOf(')') == 5) {
                         System.out.println(tcas.size());
-                    }else {
+                    } else {
                         System.out.println("Invalid command name!");
                     }
                 } else if (command.equals("isEmpty")) {
-                    if (input.indexOf(')') == 8){
+                    if (input.indexOf(')') == 8) {
                         System.out.println(tcas.isEmpty());
-                    }else {
+                    } else {
                         System.out.println("Invalid command name!");
                     }
                 } else if (command.equals("get")) {
-                    if (input.endsWith(")")){
+                    if (input.endsWith(")")) {
                         int index2 = input.indexOf('"');
                         int index3 = input.indexOf('"', 5);
                         String arg = input.substring(index2 + 1, index3);
                         System.out.println(tcas.get(arg));
-                    }else {
+                    } else {
                         System.out.println("Invalid command name!");
                     }
                 } else if (command.equals("put")) {
@@ -96,22 +99,22 @@ public class TCAS2 {
                     System.out.println(tcas.remove(inputKey));
                 } else if (command.equals("keySet")) {
 //                    System.out.println("Keyset result with each element of the set being printed on a new line: ");
-                    if (input.indexOf(')') == 7){
+                    if (input.indexOf(')') == 7) {
                         System.out.println(tcas.keySet());
-                    }else {
+                    } else {
                         System.out.println("Invalid command name!");
                     }
                 } else if (command.equals("values")) {
 //                    System.out.println("Values result with each element of the collection being printed on a new line: ");
                     System.out.println(tcas.values());
-                    if (input.indexOf(')') == 7){
+                    if (input.indexOf(')') == 7) {
                         System.out.println(tcas.values());
-                    }else {
+                    } else {
                         System.out.println("Invalid command name!");
                     }
                 } else if (command.equals("entrySet")) {
 //                    System.out.println("Entryset result with each pair of elements being printed on a new line: ");
-                    if (input.indexOf(')') == 9){
+                    if (input.indexOf(')') == 9) {
                         Set<Map.Entry<String, Integer>> entrySet1 = tcas.entrySet();
                         Map.Entry[] entryArray1 = new Map.Entry[entrySet1.size()];
                         entrySet1.toArray(entryArray1);
@@ -120,12 +123,12 @@ public class TCAS2 {
                             Object tempKey = entryArray1[i].getKey();
                             Object tempValue = entryArray1[i].getValue();
                             System.out.print("('" + tempKey + "', " + tempValue + ")");
-                            if (i != entryArray1.length - 1){
+                            if (i != entryArray1.length - 1) {
                                 System.out.print(", ");
                             }
                         }
                         System.out.println("]");
-                    }else {
+                    } else {
                         System.out.println("Invalid command name!");
                     }
                 }

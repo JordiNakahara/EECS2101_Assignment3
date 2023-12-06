@@ -21,6 +21,9 @@ public class TCAS {
         while (flag) {
             try {
                 String input = sc.nextLine();
+                if(input.toLowerCase().equals("quit")) {
+                    return;
+                }
                 int index = input.indexOf('(');
                 String command = "";
                 if (index != -1) {
@@ -52,10 +55,9 @@ public class TCAS {
                     index3 = input.indexOf(')');
                     String inputValue = input.substring(index2, index3);
                     Object output = system.put(inputKey, inputValue);
-                    if(output == null) {
+                    if (output == null) {
                         System.out.println("Added the value of: " + inputValue + " to the system");
-                    }
-                    else {
+                    } else {
                         System.out.println("Replaced value of: " + output + " in the system");
                     }
 
