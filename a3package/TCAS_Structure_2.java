@@ -204,7 +204,8 @@ public class TCAS_Structure_2<V> {
     //=====PRIVATE FUNCTIONS=====
 
     /**
-     * This is a helper method for get(String) that searches the structure for a key and returns the associated value recusively.
+     * This is a helper method for get(String) that searches the structure for a key (recursively) and updates getNode 
+     * in which get(String) has access to.
      *
      * @param node the current node we are checking
      * @param key The key to search the stucture for.
@@ -222,6 +223,14 @@ public class TCAS_Structure_2<V> {
         }
     }
 
+    /**
+     * This is a helper method for remove(String) that searches the structure for a key (recursively) and updates getNode 
+     * and the prevGetNode in which remove(String) has access to.
+     * 
+     * @param preNode the previous node
+     * @param node the current node we are checking
+     * @param key The key to search the stucture for.
+     */
     private void preOrderGetAndPrevious(TCAS_Node<V> preNode, TCAS_Node<V> node, String key) {
         if (node != null) {
             if ((!getSwitch) && !(node.getKey().equals(key))) {
@@ -242,23 +251,25 @@ public class TCAS_Structure_2<V> {
         }
     }
 
+    /**
+     * This is a helper method for put(String, V) that searches the structure for an existing key (recursively) and updates it.
+     * If there is no existing key then it adds a new node to the structure (recursively).
+     *
+     * @param node The current node we are checking
+     * @param key The key to add to the stucture.
+     * @param value The value to add to the structure.
+     */
     private void preOrderPut(TCAS_Node<V> node, String key, V value) {
-//        System.out.println("CURRENT ADD:");
-//        System.out.println("  CURRENT NODE: " + node.getKey());
-//        System.out.println("  NODE TO ADD: " + key);
         if (node == null || putSwitch) { //===NULL CASE===
             //PASS
         } else if (node.getKey().equals(key)) { //===REPEAT===
-            //System.out.println("REPLace");
             node.setValue(value);
             putSwitch = true;
         } else if (node.getKey().compareTo(key) >= 0 && node.getLeftNode() == null) { //===ADD LEFT===
-            //System.out.println("LEFT ADD" + node.getKey() + "-then-" + key);
             TCAS_Node<V> newNode = new TCAS_Node<>(key, value);
             node.setLeftNode(newNode);
             putSwitch = true;
         } else if (node.getKey().compareTo(key) < 0 && node.getRightNode() == null) { //===ADD RIGHT===
-            //System.out.println("RIGHT ADD" + node.getKey() + "-then-" + key);
             TCAS_Node<V> newNode = new TCAS_Node<>(key, value);
             node.setRightNode(newNode);
             putSwitch = true;
@@ -269,6 +280,12 @@ public class TCAS_Structure_2<V> {
         }
     }
 
+    /**
+     * This is a helper method for remove(String) that searches the structure for a key (recursively) and removes it
+     * from the stucture (recursively).
+     *
+     * @param node the current node we are checking
+     */
     private void preOrderRemove(TCAS_Node<V> node) {
         removeValue = node.getValue();
         ArrayList<TCAS_Node<V>> redoNodes = new ArrayList<>();
